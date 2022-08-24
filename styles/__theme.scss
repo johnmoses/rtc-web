@@ -1,0 +1,59 @@
+.theme-dark { 
+  background: #000; 
+  color: #fff;
+  a {
+    color: #17a2b8;
+    &:hover, &:focus {
+      color: #974541;
+    }
+  }
+}
+
+.theme-light { 
+  background: #fff; 
+  color: #000;
+  a {
+    color: #34646b;
+    &:hover, &:focus {
+      color: #974541;
+    }
+  }
+}
+
+$themes: (
+  light: (
+    primary: #fff,
+    secondary: #bfbfbf,
+    danger: #974541,
+    success: #28a745,
+    info: #17a2b8,
+  ),
+  dark: (
+    primary: #000,
+    secondary: #1a1a1a,
+    danger: #ff4136,
+    success: #28a745,
+    info: #17a2b8,
+  ),
+);
+
+@function themed($key) {
+  @return map-get($theme-map, $key);
+}
+
+@mixin themify($themes: $themes) {
+  @each $theme, $map in $themes {
+  
+      :global(.theme-#{$theme}) & { 
+        $theme-map: () !global;
+        @each $key, $submap in $map {
+          $value: map-get(map-get($themes, $theme), '#{$key}');
+          $theme-map: map-merge($theme-map, ($key: $value)) !global;
+        }
+  
+        @content;
+        $theme-map: null !global;
+      }
+  
+  }
+}

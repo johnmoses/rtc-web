@@ -1,0 +1,187 @@
+# Meetings
+query meetingList($starterId: ID, $isDeleted: Boolean, $last: Int) {
+  meetings(starterId: $starterId, isDeleted: $isDeleted, last: $last) {
+    count
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        id
+        name
+        description
+        photo
+        starter {
+          id
+          username
+        }
+        createdAt
+        modifiedAt
+        scheduledAt
+        startedAt
+        endedAt
+        deletedAt
+        isDeleted
+        isReoccuring
+      }
+    }
+  }
+}
+
+query usermeetingList($starterId: ID, $isDeleted: Boolean, $last: Int) {
+  usermeetings(starterId: $starterId, isDeleted: $isDeleted, last: $last) {
+    count
+    pageInfo {
+      hasNextPage
+      hasPreviousPage
+      startCursor
+      endCursor
+    }
+    edges {
+      node {
+        id
+        name
+        description
+        photo
+        starter {
+          id
+          username
+        }
+        createdAt
+        modifiedAt
+        scheduledAt
+        startedAt
+        endedAt
+        deletedAt
+        isDeleted
+        isReoccuring
+      }
+    }
+  }
+}
+
+
+query meetingSelect($id: ID!) {
+  meeting(id: $id) {
+    id
+    name
+    description
+    photo
+    starter {
+      id
+      username
+    }
+    createdAt
+    modifiedAt
+    scheduledAt
+    startedAt
+    endedAt
+    deletedAt
+    isDeleted
+    isReoccuring
+  }
+}
+
+mutation meetingCreate($name: String!, $description: String, $photo: String, $scheduledAt: String) {
+  meetingCreate(
+      name: $name
+      description: $description
+      photo: $photo
+      scheduledAt: $scheduledAt
+  ) {
+    meeting {
+      id
+    }
+  }
+}
+
+mutation meetingnameUpdate($id: ID!, $name: String) {
+  meetingnameUpdate(
+    input: {
+      id: $id
+      name: $name
+    }
+  ) {
+    meeting {
+      id
+    }
+  }
+}
+
+mutation meetingdescriptionUpdate($id: ID!, $description: String) {
+  meetingdescriptionUpdate(
+    input: {
+      id: $id
+      description: $description
+    }
+  ) {
+    meeting {
+      id
+    }
+  }
+}
+
+mutation meetingimageUpdate($id: ID!, $photo: String) {
+  meetingimageUpdate(
+    input: {
+      id: $id
+      photo: $photo
+    }
+  ) {
+    meeting {
+      id
+    }
+  }
+}
+
+mutation meetingSchedule($id: ID!, $scheduledAt: String) {
+  meetingSchedule(
+    input: {
+      id: $id
+      scheduledAt: $scheduledAt
+    }
+  ) {
+    meeting {
+      id
+    }
+  }
+}
+
+mutation meetingStart($id: ID!, $startedAt: String) {
+  meetingStart(
+    input: {
+      id: $id
+      startedAt: $startedAt
+    }
+  ) {
+    meeting {
+      id
+    }
+  }
+}
+
+mutation meetingEnd($id: ID!, $endedAt: String, $video: String) {
+  meetingEnd(
+    input: {
+      id: $id
+      endedAt: $endedAt
+      video: $video
+    }
+  ) {
+    meeting {
+      id
+    }
+  }
+}
+
+mutation meetingDelete($id: ID!) {
+  meetingDelete(input: { id: $id }) {
+    clientMutationId
+    meeting {
+      id
+    }
+  }
+}

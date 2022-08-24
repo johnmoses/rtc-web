@@ -1,0 +1,19 @@
+.Checkbox {
+    display: block;
+    position: relative;
+    padding-left: 3.4rem;
+    text-align: left;
+    line-height: 1.5rem;
+    cursor: pointer;
+
+    &__disabled {
+        pointer-events: none;
+        opacity: 0.5;
+    }
+
+    input {
+        position: absolute;
+        z-index: var(--z-below);
+        opacity: 0;
+    }
+}

@@ -1,0 +1,27 @@
+.MenuItem {
+    width: 100%;
+    background: none;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    display: flex;
+    padding: 0.75rem 1rem;
+    position: relative;
+    overflow: hidden;
+    line-height: 1.5rem;
+    white-space: nowrap;
+    color: var(--color-text);
+    --ripple-color: rgba(0, 0, 0, .08);
+    cursor: pointer;
+    unicode-bidi: plaintext;
+
+    .menu-item-name {
+        margin-right: 2rem;
+    
+        &.capitalize {
+          text-transform: capitalize;
+        }
+    }
+
+    
+}

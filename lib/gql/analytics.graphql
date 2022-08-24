@@ -1,0 +1,169 @@
+# Analytics
+query analyticList($last: Int) {
+    analytics(last: $last) {
+      count
+      pageInfo {
+        hasNextPage
+        hasPreviousPage
+        startCursor
+        endCursor
+      }
+      edges {
+        node {
+          id
+          anonymousId
+          title
+          event
+          channel
+          category
+          resource
+          url
+          path
+          userId
+          method
+          day
+          responseTime
+          hour
+          createdAt
+        }
+      }
+    }
+  }
+
+  query analyticSelect($id: ID!) {
+    analytic(id: $id) {
+      anonymousId
+      title
+      event
+      channel
+      category
+      resource
+      url
+      path
+      userId
+      method
+      responseTime
+      day
+      hour
+      createdAt
+    }
+  }
+
+mutation analyticCreate(
+    $anonymousId: String
+    $title: String
+    $event: String
+    $channel: String
+    $category: String
+    $resource: String
+    $url: String
+    $path: String
+    $userId: String
+    $method: String
+    $responseTime: String
+    $day: String
+    $hour: String
+) {
+    analyticCreate(
+      input: {
+        anonymousId: $anonymousId
+        title: $title
+        event: $event
+        channel: $channel
+        category: $category
+        resource: $resource
+        url: $url
+        path: $path
+        userId: $userId
+        method: $method
+        responseTime: $responseTime
+        day: $day
+        hour: $hour
+      }
+    ) {
+      analytic {
+        id
+      }
+    }
+  }
+
+  mutation analyticUpsert(
+    $id: ID!
+    $anonymousId: String
+    $title: String
+    $event: String
+    $channel: String
+    $category: String
+    $resource: String
+    $url: String
+    $path: String
+    $userId: String
+    $method: String
+    $responseTime: String
+    $day: String
+    $hour: String
+  )  {
+    analyticUpsert(
+      input: {
+        id: $id
+        anonymousId: $anonymousId
+        title: $title
+        event: $event
+        channel: $channel
+        category: $category
+        resource: $resource
+        url: $url
+        path: $path
+        userId: $userId
+        method: $method
+        responseTime: $responseTime
+        day: $day
+        hour: $hour
+      }
+    ) {
+      analytic {
+        id
+      }
+    }
+  }
+
+  mutation analyticUpdate(
+    $id: ID!
+    $anonymousId: String
+    $title: String
+    $event: String
+    $channel: String
+    $category: String
+    $resource: String
+    $url: String
+    $path: String
+    $userId: String
+    $method: String
+    $responseTime: String
+    $day: String
+    $hour: String
+  ) {
+    analyticUpdate(
+      input: {
+        id: $id
+        anonymousId: $anonymousId
+        title: $title
+        event: $event
+        channel: $channel
+        category: $category
+        resource: $resource
+        url: $url
+        path: $path
+        userId: $userId
+        method: $method
+        responseTime: $responseTime
+        day: $day
+        hour: $hour
+      }
+    ) {
+      analytic {
+        id
+      }
+    }
+  }
+  

@@ -1,0 +1,28 @@
+.Button {
+    outline: none !important;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    border: 0;
+
+    &.decorated {
+        font-size: 1.2rem;
+        border-radius: 50px;
+        border: none;
+        background-color: #5c3aff;
+        color: white;
+        &:hover {
+            background-color: #5c3acc;
+        }
+    }
+
+    &.smaller {
+        height: 2.75rem;
+        padding: 0.31rem;
+    }
+
+    &.tiny {
+        height: 2.25rem;
+        padding: 0.43rem;
+    }
+}
